@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">ProjetoExperiencias</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="rel_gio_anal_gico">Relógio analógico</string>
+    <string name="prosseguir">Limpa base</string>
+    <string name="title_activity_resultado">ResultadoActivity</string>
+    <string name="rel_gio_digital">Relógio digital</string>
+    <string name="dados_data">Dados data</string>
+    <string name="dadosdata">dadosData</string>
+    <string name="horarioregistrado">horarioRegistrado</string>
+    <string name="resulthorario">resultHorario</string>
+    <string name="e_m">E_M</string>
+    <string name="s_m">S_M</string>
+    <string name="e_t">E_T</string>
+    <string name="s_t">S_T</string>
+
+</resources>
