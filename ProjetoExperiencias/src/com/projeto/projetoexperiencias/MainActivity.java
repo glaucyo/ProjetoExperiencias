@@ -1,5 +1,7 @@
 package com.projeto.projetoexperiencias;
 
+import java.util.List;
+
 import org.joda.time.DateTime;
 
 import android.app.Activity;
@@ -30,6 +32,7 @@ public class MainActivity extends Activity {
 			getFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
 		}
+		Log.i(TAG, "Passando no onCreate!");
 	}
 
 	@Override
@@ -134,6 +137,8 @@ public class MainActivity extends Activity {
 		startActivity(intent);
 		Log.i(TAG, "Mostrando os pontos batidos de hj!");
 	}
+	
+	
 	/**
 	 * A placeholder fragment containing a simple view.
 	 */
@@ -147,7 +152,39 @@ public class MainActivity extends Activity {
 				Bundle savedInstanceState) {
 			View rootView = inflater.inflate(R.layout.fragment_main, container,
 					false);
+			Log.i(TAG, "Passando no onCreateView (do fragmento)!");
+			List<String> pontosBatidos = getPontosBatidos();
+			for (String string : pontosBatidos) {
+				switch (string) {
+				case "1":
+					rootView.findViewById(R.id.buttonEntradaManha).setEnabled(false);
+					break;
+				case "2":
+					rootView.findViewById(R.id.buttonSaidaManha).setEnabled(false);
+					break;
+				case "3":
+					rootView.findViewById(R.id.buttonEntradaTarde).setEnabled(false);
+					break;
+				case "4":
+					rootView.findViewById(R.id.buttonSaidaTarde).setEnabled(false);
+					break;
+				default:
+					break;
+				}
+			}
 			return rootView;
 		}
+		
+		public List<String> getPontosBatidos(){
+			DateTime in = new DateTime();
+			String dia = in.toString();
+			dia = dia.substring(0, 10);
+			
+			DBAdapter.init(getActivity());
+			List<String> pontosBatidosDia = DBAdapter.verificaPontosBatidosDia(dia);
+			
+			return pontosBatidosDia;
+		}
+		
 	}
 }
