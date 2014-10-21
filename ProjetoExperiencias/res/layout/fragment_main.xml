@@ -23,8 +23,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/analogClock1"
         android:layout_centerHorizontal="true"
-        android:textSize="22sp"
-        android:text="@string/rel_gio_digital" />
+        android:text="@string/rel_gio_digital"
+        android:textSize="22sp" />
 
     <AnalogClock
         android:id="@+id/analogClock1"
@@ -46,8 +46,8 @@
         android:id="@+id/button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
         android:layout_alignEnd="@+id/analogClock1"
+        android:layout_alignParentEnd="true"
         android:layout_alignStart="@+id/digitalClock1"
         android:layout_below="@+id/dadosData"
         android:layout_marginEnd="24dp"
@@ -56,11 +56,11 @@
         android:text="@string/prosseguir" />
 
     <LinearLayout
+        android:id="@+id/linearLayout1"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_below="@+id/button1"
-        
         android:layout_marginTop="37dp" >
 
         <Button
@@ -68,8 +68,8 @@
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="prossegue"
             android:hint="@string/e_m"
+            android:onClick="prossegue"
             android:text="@string/e_m" />
 
         <Button
@@ -77,8 +77,8 @@
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="prossegue"
             android:hint="@string/s_m"
+            android:onClick="prossegue"
             android:text="@string/s_m" />
 
         <Button
@@ -86,8 +86,8 @@
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="prossegue"
             android:hint="@string/e_t"
+            android:onClick="prossegue"
             android:text="@string/e_t" />
 
         <Button
@@ -95,9 +95,40 @@
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="prossegue"
             android:hint="@string/s_t"
+            android:onClick="prossegue"
             android:text="@string/s_t" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/button2"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:onClick="mostraResumo"
+        android:text="@string/ver_resumo" />
+
+    <Button
+        android:id="@+id/button3"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/linearLayout1"
+        android:layout_alignTop="@+id/button2"
+        android:onClick="verPontoHoje"
+        android:text="Ver pontos" />
+
+    <Button
+        android:id="@+id/button4"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_alignTop="@+id/analogClock1"
+        android:layout_marginTop="28dp"
+        android:onClick="fechaApp"
+        android:text="Fechar" />
 
 </RelativeLayout>

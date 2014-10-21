@@ -13,6 +13,19 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+        <!-- Splash screen -->
+        <activity	
+			android:name=".SplashScreen"
+			android:label="@string/app_name"
+			android:screenOrientation="portrait"
+			android:theme="@android:style/Theme.Black.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+ 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name" >
@@ -25,6 +38,38 @@
         <activity
             android:name=".ResultadoActivity"
             android:label="@string/title_activity_resultado"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.projeto.projetoexperiencias.MainActivity" />
+        </activity>
+        <activity
+            android:name=".RelatorioDiaActivity"
+            android:label="@string/title_activity_relatorio_dia"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.projeto.projetoexperiencias.MainActivity" />
+        </activity>
+        <activity
+            android:name=".TitleDescriptionListAdapter"
+            android:label="Lista"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.projeto.projetoexperiencias.MainActivity" />
+        </activity>
+        <activity
+            android:name=".CustomLayoutListActivity"
+            android:label="@string/title_activity_custom_layout_list_fragment"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.projeto.projetoexperiencias.MainActivity" />
+        </activity>
+        <activity
+            android:name=".PontosHojeActivity"
+            android:label="@string/title_activity_pontos_hoje"
             android:parentActivityName=".MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

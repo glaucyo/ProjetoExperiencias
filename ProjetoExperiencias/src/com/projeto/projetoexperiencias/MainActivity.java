@@ -106,7 +106,34 @@ public class MainActivity extends Activity {
 		//AnalogClock clock = (AnalogClock) findViewById(R.id.analogClock1);
 		//clock.get
 	}
+	
+	
+	public void mostraResumo(View view){
+		//DBAdapter.limpaBase();
+		//Intent intent = new Intent(this, RelatorioDiaActivity.class);
+		Intent intent = new Intent(this, CustomLayoutListActivity.class);
+		startActivity(intent);
+		/*
+		getFragmentManager().beginTransaction()
+        .replace(R.id.container, new CustomLayoutListFragment())
+        .commit();
+        */
+		//TODO: depois, fazer a consulta no BD
+		Log.i(TAG, "Mostrando o resumo!");
+	}
+	
+	public void fechaApp(View view){
+		Log.i(TAG, "Fechando Aplicação!");
+		this.finish();
+	}
+	//RelatorioDiaActivity
+	//button3
 
+	public void verPontoHoje(View view){
+		Intent intent = new Intent(this, PontosHojeActivity.class);
+		startActivity(intent);
+		Log.i(TAG, "Mostrando os pontos batidos de hj!");
+	}
 	/**
 	 * A placeholder fragment containing a simple view.
 	 */

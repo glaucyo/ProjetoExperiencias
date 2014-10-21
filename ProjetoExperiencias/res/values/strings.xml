@@ -16,5 +16,12 @@
     <string name="s_m">S_M</string>
     <string name="e_t">E_T</string>
     <string name="s_t">S_T</string>
+    <string name="ver_resumo">Ver resumo</string>
+    <string name="title_activity_relatorio_dia">RelatorioDiaActivity</string>
+    <string name="list_item_title">List Item Title</string>
+    <string name="list_item_description">List item description</string>
+    <string name="title_activity_custom_layout_list_fragment">CustomLayoutListFragment</string>
+    <string name="title_activity_pontos_hoje">PontosHojeActivity</string>
+    <string name="bate_ponto">Bate Ponto</string>
 
 </resources>

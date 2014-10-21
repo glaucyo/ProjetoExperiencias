@@ -1,7 +1,11 @@
 package com.projeto.projetoexperiencias;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import com.projeto.projetoexperiencias.util.FuncoesUteis;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -191,7 +195,95 @@ public class DBAdapter {
         // return pontos list
         return pontosList;
     }
-	
+    
+    /**
+     * Traz os horários em um map
+     * @return
+     */
+    public static ArrayList<Map<String, String>> getAllHorariosDataMap() {
+    	
+    	ArrayList<Map<String, String>> pontosList = new ArrayList<Map<String, String>>();
+    	
+    	//List<PontoVo> pontosList = new ArrayList<PontoVo>();
+        // Select All Query
+        String selectQuery = "SELECT  * FROM " + HORARIOS_TABLE;
+        String dataCorrente = "";
+        final SQLiteDatabase db = open();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+ 
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+        	do {
+        		
+        		String tipoEntrada = cursor.getString(1);
+        		String horarioRegistrado = cursor.getString(2);
+        		horarioRegistrado = horarioRegistrado.substring(11, 19);
+        		
+        		String dataRegistrada = cursor.getString(2);
+        		dataRegistrada = dataRegistrada.substring(0, 10);
+        		dataRegistrada = FuncoesUteis.consertaData(dataRegistrada);
+        		
+        		switch (tipoEntrada) {
+				case "1":
+					tipoEntrada = "Entrada manhã: ";
+					break;
+				case "2":
+					tipoEntrada = "Saída manhã: ";
+					break;
+				case "3":
+					tipoEntrada = "Entrada tarde: ";
+					break;
+				case "4":
+					tipoEntrada = "Saída tarde: ";
+					break;	
+				default:
+					break;
+				}
+        		
+        		HashMap<String, String> dia = new HashMap<String, String>();
+                dia.put("title", dataRegistrada);
+                dia.put("description", tipoEntrada + horarioRegistrado);
+                pontosList.add(dia);
+        		
+        		/* este está ok
+        		PontoVo ponto = new PontoVo();
+        		
+        		
+        		ponto.setHorario(horarioRegistrado);
+        		ponto.setTipoEntrada(tipoEntrada);
+            	
+        		pontosList.add(ponto);
+        		*/
+            } while (cursor.moveToNext());
+        }
+        // return pontos list
+        return pontosList;
+    }
+    
+    public static List<String> verificaPontosBatidosDia(String dia) {
+    	
+    	List<String> listaBatidos = new ArrayList<String>();
+    	
+    	String selectQuery = "SELECT * FROM " + HORARIOS_TABLE;
+    	
+    	final SQLiteDatabase db = open();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+ 
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+        	do {
+        		
+        		String batido = cursor.getString(1);
+        		//TODO: VERIFICA SE A DATA É A MESMA PASSADA
+        		if(dia.equals(cursor.getString(2).substring(0, 10))){
+        			listaBatidos.add(batido);
+        		}
+            } while (cursor.moveToNext());
+        }
+        
+        return listaBatidos;
+    }
+
     // Adding new horarios
     public static void addTodosHorarios(HorariosDiaVo horario) {
     	final SQLiteDatabase db = open();
